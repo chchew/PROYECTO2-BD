@@ -86,7 +86,53 @@ boton5=Button(miFrame, text="INGRESAR EMPLEADOS")
 boton5.place(x=100,y= 400)
 
 
+#empleados
+label1= Label(leFrame, text="Empleados", font = (40), fg="white", bg="red3")
+label1.place(x=313,y=10)
 
+def consultar_empleados():
+    cur.execute('SELECT * FROM "empleados"')
+    rows = cur.fetchall()
+    cur.execute('SELECT count(nombre) FROM "empleados" ')
+    rows_2 = cur.fetchall()
+    for r in rows_2:
+        fin = int(r[0])
+    print(fin)
+    labelP = Label(miFrame, text="Codigo \nempledos:", fg="red3")
+    labelP.place(x=90,y=60)
+    labelP = Label(miFrame, text="Nombre:", fg="red3")
+    labelP.place(x=190,y=60)
+    labelP = Label(miFrame, text="salario:", fg="red3")
+    labelP.place(x=290,y=60)
+
+    n = 0
+    x = 0
+    while n < fin:
+        labelP = Label(miFrame, text=rows[0+n], fg="red3")
+        labelP.place(x=90,y=100+x)
+        n = n + 1
+        x = x + 30
+
+
+cdme = Entry(leFrame)
+cdme.place(x=360,y=60)
+labelt9= Label(leFrame, text="Codigo \nempleados:", fg="white", bg="red3")
+labelt9.place(x=313,y=60)
+
+nombreP= Entry(leFrame)
+nombreP.place(x=360,y=110)
+labelt10= Label(leFrame, text="Nombre:", fg="white", bg="red3")
+labelt10.place(x=313,y=110)
+
+cantidadP= Entry(leFrame)
+cantidadP.place(x=360,y=160)
+labelt11= Label(leFrame, text="salario:", fg="white", bg="red3")
+labelt11.place(x=313,y=160)
+
+boton5=Button(miFrame, text="CONSULTAR EMPLEADOS", command=consultar_empleados)
+boton5.place(x=313,y= 440)
+boton5=Button(miFrame, text="INGRESAR EMPLEADOS")
+boton5.place(x=313,y= 400)
 
 root.mainloop()
 cur.close()
