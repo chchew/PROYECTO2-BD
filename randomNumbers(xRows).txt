@@ -1,0 +1,18 @@
+with randowvalues
+    as(
+       select 1 id, CAST(RAND(CHECKSUM(NEWID()))*100 as int) randomnumber
+	   --select 1 id, RAND(CHECKSUM(NEWID()))*100 randomnumber
+        union  all
+        select id + 1, CAST(RAND(CHECKSUM(NEWID()))*100 as int)  randomnumber
+		--select id + 1, RAND(CHECKSUM(NEWID()))*100  randomnumber
+        from randowvalues
+        where 
+          id < 1000
+      )
+ 
+ 
+ 
+    select *
+    from randowvalues
+    OPTION(MAXRECURSION 0)
+ 
