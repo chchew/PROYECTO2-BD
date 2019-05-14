@@ -11,10 +11,10 @@ leFrame=Frame()
 miFrame.pack()
 leFrame.pack()
 #Propiedades del Frame
-miFrame.config(width="1250", height="500")
+miFrame.config(width="1000", height="300")
 miFrame.config(bg="white")
 miFrame.config(relief="sunken")
-leFrame.config(width="1250", height="500")
+leFrame.config(width="1000", height="300")
 leFrame.config(bg="red3")
 leFrame.config(relief="sunken")
 
@@ -24,13 +24,27 @@ def Insertar_informacion():
     
 #titulo
 Label0= Label(miFrame, text="FARMACIA ROJA", fg = "red", font = "Times")
-Label0.place(x=555, y=10)
+Label0.place(x=450, y=10)
 
 #boton para ir a la ventana insertar
+L1= Label(miFrame, text="1.", fg = "red", bg="white", font = "Symbol")
+L1.place(x=100, y=40)
 VInsertar=Button(miFrame, text="INSERTAR INFORMACIÓN", command=Insertar_informacion)
 VInsertar.pack()
-VInsertar.place(x=100,y= 410)
+VInsertar.place(x=150,y= 40)
 
+#Consultas rapidas
+L2= Label(miFrame, text="2.", fg = "red", bg="white" ,font = "Symbol")
+L2.place(x=100, y=140)
+consulta=Button(miFrame, text="CONSULTAS RAPIDAS", command=Insertar_informacion)
+consulta.pack()
+consulta.place(x=150,y= 140)
 
+#boton para ir ayuda
+L2= Label(miFrame, text="3.", fg = "red", bg="white" ,font = "Symbol")
+L2.place(x=100, y=240)
+ayuda = Button(miFrame, text="Ayuda")
+ayuda.pack()
+ayuda.place(x=150, y=240)
 
 root.mainloop()
