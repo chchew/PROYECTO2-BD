@@ -175,23 +175,27 @@ def consultar_productos():
         labelP.place(x=90,y=100+x)
         n = n + 1
         x = x + 30
-
+        
 def insertar_producto():
-   alertaP =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
-   if alertaP == True:
-       print("producto")
+    alertaC =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
+    if alertaC == True:
+        cur.execute('INSERT INTO public.producto (codifo_mc, nombre, cantidad_por_unidad, farmaceutica) VALUES (%s, %s, %s, %s);',(cdmc.get(), nombrePR.get(), cantidadP.get(), farmaceutica.get(),))
+        con.commit()
+        labelP = Label(miFrame, text="INFORMACIÓN INGRESADA:", fg="red3")
+        labelP.place(x=90,y=60)
+    
 
 cdmc = Entry(leFrame)
 cdmc.place(x=115,y=60)
 labelt9= Label(leFrame, text="Codigo \nmedicina:", fg="white", bg="red3")
 labelt9.place(x=30,y=60)
 
-nombreP= Entry(leFrame)
-nombreP.place(x=115,y=110)
+nombrePR= Entry(leFrame)
+nombrePR.place(x=115,y=110)
 labelt10= Label(leFrame, text="Nombre:", fg="white", bg="red3")
 labelt10.place(x=30,y=110)
 
-cantidadP= Entry(leFrame)
+cantidadP= Spinbox(leFrame, from_=0, to=1000)
 cantidadP.place(x=115,y=160)
 labelt11= Label(leFrame, text="cantidad:", fg="white", bg="red3")
 labelt11.place(x=30,y=160)
@@ -235,9 +239,13 @@ def consultar_empleados():
         x = x + 30
 
 def insertar_empleado():
-   alertaE =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
-   if alertaE == True:
-       print("empleado")
+    alertaC =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
+    if alertaC == True:
+        alertaP =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
+        cur.execute('INSERT INTO public.empleados(codigo_ep, nombre, salario) VALUES (%s, %s, %s);',(cdme.get(), nombreP.get(), salarioP.get(),))
+        con.commit()
+        labelP = Label(miFrame, text="INFORMACIÓN INGRESADA", fg="red3")
+        labelP.place(x=90,y=60)
 
 cdme = Entry(leFrame)
 cdme.place(x=390,y=60)
@@ -249,7 +257,7 @@ nombreP.place(x=390,y=110)
 labelt10= Label(leFrame, text="Nombre:", fg="white", bg="red3")
 labelt10.place(x=313,y=110)
 
-salarioP= Entry(leFrame)
+salarioP= Spinbox(leFrame, from_=0, to=5000)
 salarioP.place(x=390,y=160)
 labelt11= Label(leFrame, text="salario:", fg="white", bg="red3")
 labelt11.place(x=313,y=160)
@@ -289,20 +297,23 @@ def consultar_cliente():
 def insertar_cliente():
    alertaC =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
    if alertaC == True:
-       print("cliente")
+       cur.execute('INSERT INTO public.cliente(codigo_cl, nombre, dirreccion) VALUES (%s, %s, %s);',(cdcl.get(), nombreC.get(), dirrecion.get(),))
+       con.commit()
+       labelP = Label(miFrame, text="INFORMACIÓN INGRESADA", fg="red3")
+       labelP.place(x=90,y=60)
 
-cdme = Entry(leFrame)
-cdme.place(x=640,y=60)
+cdcl = Entry(leFrame)
+cdcl.place(x=640,y=60)
 labelt9= Label(leFrame, text="Codigo \ncliente:", fg="white", bg="red3")
 labelt9.place(x=563,y=60)
 
-nombreP= Entry(leFrame)
-nombreP.place(x=640,y=110)
+nombreC= Entry(leFrame)
+nombreC.place(x=640,y=110)
 labelt10= Label(leFrame, text="Nombre:", fg="white", bg="red3")
 labelt10.place(x=553,y=110)
 
-salarioP= Entry(leFrame)
-salarioP.place(x=640,y=160)
+dirrecion= Entry(leFrame)
+dirrecion.place(x=640,y=160)
 labelt11= Label(leFrame, text="Dirrección:", fg="white", bg="red3")
 labelt11.place(x=553,y=160)
 
@@ -320,6 +331,8 @@ def consultar_ventas():
     global mes
     global dia
     global hora
+    global fechaactual
+    global horacorrecta
     alerta = messagebox.askokcancel("Cuidado", "Esta seguro que desea ingresar esta fecha y hora? \nRecuerda no dejarlo en blanco")
     if alerta == True: 
         fechaactual = str(año)+"-"+str(mes)+"-"+str(dia)
@@ -359,37 +372,43 @@ def consultar_ventas():
             x = x + 30
 
 def insertar_ventas():
-   alertaV =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
-   if alertaV == True:
-       print("ventas")
+    fechaactual = str(año)+"-"+str(mes)+"-"+str(dia)
+    horacorrecta = str(hora)+":00"
+    alertaV =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
+    print(fechaactual, horacorrecta)
+    if alertaV == True:
+        cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date) VALUES (%s, %s, %s, 15, %s, %s, %s, %s, %s);',(cdvn.get(), horacorrecta, numeroF.get(), codigoE.get(), codigoC.get(), codigoM.get(), precio.get(), fechaactual,))
+        con.commit()
+        labelP = Label(miFrame, text="INFORMACIÓN INGRESADA", fg="red3")
+        labelP.place(x=90,y=60)
 
-cdme = Entry(leFrame)
-cdme.place(x=870,y=60)
+cdvn = Entry(leFrame)
+cdvn.place(x=870,y=60)
 labelt9= Label(leFrame, text="Codigo \nventa:", fg="white", bg="red3")
 labelt9.place(x=800,y=60)
 
-nombreP= Entry(leFrame)
-nombreP.place(x=870,y=110)
+numeroF= Entry(leFrame)
+numeroF.place(x=870,y=110)
 labelt10= Label(leFrame, text="numero de \nfactura:", fg="white", bg="red3")
 labelt10.place(x=800,y=110)
 
-salarioP= Entry(leFrame)
-salarioP.place(x=870,y=160)
-labelt11= Label(leFrame, text="Cogio \nempleado:", fg="white", bg="red3")
+codigoE= Entry(leFrame)
+codigoE.place(x=870,y=160)
+labelt11= Label(leFrame, text="Codigo \nempleado:", fg="white", bg="red3")
 labelt11.place(x=800,y=160)
 
-salarioP= Entry(leFrame)
-salarioP.place(x=870,y=210)
-labelt11= Label(leFrame, text="Cogio \nmedicina:", fg="white", bg="red3")
+codigoM= Entry(leFrame)
+codigoM.place(x=870,y=210)
+labelt11= Label(leFrame, text="Codigo \nmedicina:", fg="white", bg="red3")
 labelt11.place(x=800,y=210)
 
-salarioP= Entry(leFrame)
-salarioP.place(x=870,y=260)
-labelt11= Label(leFrame, text="Cogio \ncliente:", fg="white", bg="red3")
+codigoC= Entry(leFrame)
+codigoC.place(x=870,y=260)
+labelt11= Label(leFrame, text="Codigo \ncliente:", fg="white", bg="red3")
 labelt11.place(x=800,y=260)
 
-salarioP= Entry(leFrame)
-salarioP.place(x=1060,y=60)
+precio= Entry(leFrame)
+precio.place(x=1060,y=60)
 labelt11= Label(leFrame, text="Precio:", fg="white", bg="red3")
 labelt11.place(x=1005,y=60)
 
