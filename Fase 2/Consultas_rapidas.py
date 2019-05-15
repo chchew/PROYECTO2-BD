@@ -56,50 +56,49 @@ label3.place(x=700,y=10)
 label4= Label(leFrame, text="VENTAS", font = (40))
 label4.place(x=1000,y=10)
 
-#Label y entry de informacion por categoria
+
 
 #Funciones de los botones
 
 
 def mejor_vendedor():
-	root.mainloop()
-	cur.close()
-	con.close()  
+	cur.execute('SELECT codigo_ep , SUM(dinero_generado) FROM "Ventas Especificas" GROUP BY codigo_ep DESC LIMIT 10 ')
+	rows= cur.fetchall()
+	print(rows)
+
 
 def mejor_pagado():
 	cur.execute('SELECT nombre , salario FROM "empleados" ORDER BY salario DESC LIMIT 10')
 	rows = cur.fetchall()
-	rows
+	print(rows)
 
 def mejor_cliente():
-	root.mainloop()
-	cur.close()
-	con.close()  
+	cur.execute('SELECT codigo_cl, dinero_generado FROM ') 
 
 def mas_frecuente():
 	cur.execute('SELECT nombre,COUNT(nombre) AS visitas FROM "clientes" ORDER BY visitas DESC LIMIT 10')
 	rows=cur.fetchall()
-	rows
+	print(rows)
 
 def mas_abundante():
 	cur.execute('SELECT nombre,cantidad_por_unidad FROM "productos" ORDER BY cantidad_por_unidad DESC LIMIT 10')
 	rows=cur.fetchall()
-	rows
+	print(rows)
 
 def mas_caro():
 	cur.execute('SELECT nombre,precio FROM "productos" ORDER BY precio DESC LIMIT 10 ' )
 	rows=cur.fetchall()
-	rows
+	print(rows)
 
 def mayor_ventas():
-	cur.execute('SELECT "numero de factura", dinero_generado, date FROM "Ventas Especificasd" ORDER BY dinero_generado DESC LIMIT 10 ')
+	cur.execute('SELECT "numero de factura", dinero_generado, date FROM "Ventas Especificas" ORDER BY dinero_generado DESC LIMIT 10 ')
 	rows=cur.fetchall()
-	rows
+	print(rows)
 
 def listado_empleados():
 	cur.execute('SELECT nombre FROM "empleados" ORDER BY nombre')
 	rows=cur.fetchall()
-	rows 
+	print(rows) 
 
 
 
