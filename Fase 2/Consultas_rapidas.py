@@ -73,20 +73,20 @@ def mejor_pagado():
 	print(rows)
 
 def mejor_cliente():
-	cur.execute('SELECT codigo_cl, dinero_generado FROM ') 
+	cur.execute('SELECT codigo_cl, dinero_generado FROM "Ventas Especificas" ORDER BY dinero_generado DESC LIMIT 10 ') 
 
 def mas_frecuente():
-	cur.execute('SELECT nombre,COUNT(nombre) AS visitas FROM "clientes" ORDER BY visitas DESC LIMIT 10')
+	cur.execute('SELECT nombre,COUNT(nombre) AS visitas FROM "cliente" ORDER BY visitas DESC LIMIT 10')
 	rows=cur.fetchall()
 	print(rows)
 
 def mas_abundante():
-	cur.execute('SELECT nombre,cantidad_por_unidad FROM "productos" ORDER BY cantidad_por_unidad DESC LIMIT 10')
+	cur.execute('SELECT nombre,cantidad_por_unidad FROM "producto" ORDER BY cantidad_por_unidad DESC LIMIT 10')
 	rows=cur.fetchall()
 	print(rows)
 
 def mas_caro():
-	cur.execute('SELECT nombre,precio FROM "productos" ORDER BY precio DESC LIMIT 10 ' )
+	cur.execute('SELECT nombre,precio FROM "producto" ORDER BY precio DESC LIMIT 10 ' )
 	rows=cur.fetchall()
 	print(rows)
 
