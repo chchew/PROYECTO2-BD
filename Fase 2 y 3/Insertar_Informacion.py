@@ -442,12 +442,9 @@ l1= Label(leFrame, text="--", fg="white", bg="red3")
 
 boton5=Button(miFrame, text="HISTORIAL DE VENTAS", command=consultar_ventas)
 boton5.place(x=800,y= 440)
-boton5=Button(miFrame, text="HISTORIAL DE VENTAS\nPOR MES")
-boton5.place(x=950,y= 445)
 boton5=Button(miFrame, text="INGRESAR VENTAS", command=insertar_ventas)
 boton5.place(x=800,y= 400)
-boton5=Button(miFrame, text="HISTORIAL DE VENTAS\nPOR AÑO")
-boton5.place(x=950,y= 395)
+
 
 
 
