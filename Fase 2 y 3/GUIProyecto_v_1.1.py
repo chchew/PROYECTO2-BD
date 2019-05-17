@@ -21,6 +21,9 @@ leFrame.config(relief="sunken")
 #Creacion de otras ventanas
 def Insertar_informacion():
     call(["python", "Insertar_Informacion.py"])
+
+def Simular_ventas():
+    call(["python", "simulador.py"])
     
 #titulo
 Label0= Label(miFrame, text="FARMACIA ROJA", fg = "red", font = "Times")
@@ -33,10 +36,10 @@ VInsertar=Button(miFrame, text="INSERTAR INFORMACIÓN", command=Insertar_informa
 VInsertar.pack()
 VInsertar.place(x=150,y= 40)
 
-#Consultas rapidas
+#simular ventas 
 L2= Label(miFrame, text="2.", fg = "red", bg="white" ,font = "Symbol")
 L2.place(x=100, y=140)
-consulta=Button(miFrame, text="CONSULTAS RAPIDAS", command=Insertar_informacion)
+consulta=Button(miFrame, text="SIMULADOR DE VENTAS", command=Simular_ventas)
 consulta.pack()
 consulta.place(x=150,y= 140)
 

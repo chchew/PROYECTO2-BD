@@ -28,7 +28,7 @@ leFrame.config(bg="red3")
 leFrame.config(relief="sunken")
 
 #titulo
-Label0= Label(miFrame, text="Insertar informacion", fg = "red", font = "Times")
+Label0= Label(miFrame, text="Insertar información", fg = "red", font = "Times")
 Label0.place(x=555, y=10)
 
 año = []
@@ -362,6 +362,7 @@ def consultar_ventas():
         labelP.place(x=790,y=60)
         labelP = Label(miFrame, text="Fecha:", fg="red3")
         labelP.place(x=890,y=60)
+        
 
         n = 0
         x = 0
