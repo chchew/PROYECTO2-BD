@@ -57,6 +57,12 @@ day.place(x=20, y=170)
 fechaBoton = Button(leFrame, text="FECHA A SIMULAR", command=ingresar_fecha)
 fechaBoton.place(x=20, y=200)
 
+#cantidad de datos a ingresados
+labelCantidad= Label(leFrame, text="Cantidad", fg="white", bg="red3")
+labelCantidad.place(x=180, y=20)
+cantidad = Spinbox(leFrame, from_=0, to=1000000, width=10)
+cantidad.place(x=180, y=50)
+
 root.mainloop()
 cur.close()
 con.close()  

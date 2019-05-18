@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import simpledialog
 import psycopg2
 
 con = psycopg2.connect(
@@ -375,13 +376,19 @@ def consultar_ventas():
 def insertar_ventas():
     fechaactual = str(año)+"-"+str(mes)+"-"+str(dia)
     horacorrecta = str(hora)+":00"
-    alertaV =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
-    print(fechaactual, horacorrecta)
-    if alertaV == True:
-        cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date) VALUES (%s, %s, %s, 15, %s, %s, %s, %s, %s);',(cdvn.get(), horacorrecta, numeroF.get(), codigoE.get(), codigoC.get(), codigoM.get(), precio.get(), fechaactual,))
+    numeroVentas = simpledialog.askstring("Input", "¿Cuantos productos se venderan?")
+    Pventas = 0
+    while Pventas < int(numeroVentas):
+        CodigoQ = simpledialog.askstring("Input", "Escribe el codigo del producto")
+        cur.execute('SELECT precio_individual FROM "producto" WHERE codifo_mc = %s',(CodigoQ,))
+        rows_3 = cur.fetchall()
+        for r in rows_3:
+            nr = int(r[0])
+        cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date) VALUES (%s, %s, %s, 15, %s, %s, %s, %s, %s);',(cdvn.get(), horacorrecta, numeroF.get(), codigoE.get(), codigoC.get(), CodigoQ, nr, fechaactual,))
         con.commit()
-        labelP = Label(miFrame, text="INFORMACIÓN INGRESADA", fg="red3")
-        labelP.place(x=90,y=60)
+        Pventas = Pventas + 1
+    labelP = Label(miFrame, text="INFORMACIÓN INGRESADA", fg="red3")
+    labelP.place(x=90,y=60)
 
 cdvn = Entry(leFrame)
 cdvn.place(x=870,y=60)
@@ -398,20 +405,10 @@ codigoE.place(x=870,y=160)
 labelt11= Label(leFrame, text="Codigo \nempleado:", fg="white", bg="red3")
 labelt11.place(x=800,y=160)
 
-codigoM= Entry(leFrame)
-codigoM.place(x=870,y=210)
-labelt11= Label(leFrame, text="Codigo \nmedicina:", fg="white", bg="red3")
-labelt11.place(x=800,y=210)
-
 codigoC= Entry(leFrame)
-codigoC.place(x=870,y=260)
+codigoC.place(x=870,y=210)
 labelt11= Label(leFrame, text="Codigo \ncliente:", fg="white", bg="red3")
-labelt11.place(x=800,y=260)
-
-precio= Entry(leFrame)
-precio.place(x=1060,y=60)
-labelt11= Label(leFrame, text="Precio:", fg="white", bg="red3")
-labelt11.place(x=1005,y=60)
+labelt11.place(x=800,y=210)
 
 
 #año
