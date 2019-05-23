@@ -74,7 +74,7 @@ def simulacion():
 		numf = loop 
 		stnumf = str(numf)
 
-		facura = '20'+(year.get())+'_'+realmes+'_'+stnumf
+		factura = '20'+(year.get())+'_'+realmes+'_'+stnumf
 
 		realdate = '20'+(year.get())+'-'+realmes+'-'+(dia.get())
 
