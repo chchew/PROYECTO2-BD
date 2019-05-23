@@ -58,7 +58,7 @@ def simulacion():
 
 		venta = 'VN' + (mes.get()) + (year.get())
 
-		hora = str(random.randint(00,24))
+		hora = str(random.randint(00,23))
 
 		minuto = str(random.randint(00,59))
 
