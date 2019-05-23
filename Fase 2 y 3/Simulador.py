@@ -80,7 +80,7 @@ def simulacion():
 
 
 		while num_productos != 0:
-			precio  = rnadom.randint(10,500)
+			precio  = random.randint(10,500)
 			producto_ran= random.choice(producto)
 
 
