@@ -1,181 +1,244 @@
-import random 
+import random
+from tkinter import messagebox
 from tkinter import * 
 import psycopg2
 
 
 
 con = psycopg2.connect(
-
             host="localhost",
-
             database="Farmacia_Roja",
-
             user="postgres",
-
             password="pokopo"
-
 )
-
 cur = con.cursor()
-
-
-#Simulacion 
-def simulacion():
-	
-	loop = int(cant.get()) 
-	while loop != 0:
-		num_productos = random.randint(1,5)
-		cliente_ran = random.choice(cliente)
-		empleado_ran = random.choice(empleado)
-		venta = 'VN' + (mes.get()) + (year.get())
-		hora = str(random.randint(00,24))
-		minuto = str(random.randint(00,59))
-		segundo = str(random.randint(00,59))
-		time = hora + ":" + minuto + ":" + segundo
-		mess=mes.get()
-		realmes=' '
-
-		if mess =='jan':
-			realmes='01'
-
-		elif mess =='feb':
-			realmes='02'
-
-		elif mess=='mar':
-			realmes='03'
-
-		elif mess=='apr':
-			realmes='04'
-
-		elif mess=='may':
-			realmes='05'
-
-		elif mess=='jun':
-			realmes='06'
-
-		elif mess=='jul':
-			realmes='07'
-
-		elif mess=='aug':
-			realmes='08'
-
-		elif mess=='sep':
-			realmes='09'
-
-		elif mess=='oct':
-			realmes='10'
-
-		elif mess=='nov':
-			realmes='11' 
-
-		elif mess=='dec':
-			realmes='12'
-
-		numf = loop 
-		stnumf = str(numf)
-
-		factura = '20'+(year.get())+'_'+realmes+'_'+stnumf
-
-		realdate = '20'+(year.get())+'-'+realmes+'-'+(dia.get())
-
-
-		while num_productos != 0:
-			precio  = random.randint(10,500)
-			producto_ran= random.choice(producto)
-
-
-			cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date) VALUES (%s, %s, %s, 15, %s, %s, %s, %s, %s);',(venta,time, factura,15,empleado_ran,cliente_ran,producto_ran,precio,realdate))
-			con.commit()
-
-			num_productos = num_productos - 1
-
-		loop = loop - 1
-
-	
-
-
 
 #Creacion de Raiz
 root  = Tk() 
-
-
-root.title("Proyecto Bases de Datos")
-
-
+root.title("Simulación")
 
 #Creacion del Frame
-
 leFrame=Frame()
-
-
-#Empaquetacion del Frame
-
 leFrame.pack()
 
 #Propiedades del Frame
-
-
 leFrame.config(width="700", height="500")
 leFrame.config(bg="red3")
 leFrame.config(relief="sunken")
 
+def simular():
+    MES = mes.get()
+    DIA = dia.get()
+    AÑO = año.get()
+    CANT = cantidad.get()
+    NN = nn.get()
+    entradas = int(CANT)
+
+    mesSTR = ''
+    ##codigoVN
+    if int(MES) == 1:
+        mesSTR = 'ene'
+    elif int(MES) == 2:
+        mesSTR = 'feb'
+    elif int(MES) == 3:
+        mesSTR = 'mar'
+    elif int(MES) == 4:
+        mesSTR = 'abr'
+    elif int(MES) == 5:
+        mesSTR = 'may'
+    elif int(MES) == 6:
+        mesSTR = 'jun'
+    elif int(MES) == 7:
+        mesSTR = 'jul'
+    elif int(MES) == 8:
+        mesSTR = 'ago'
+    elif int(MES) == 9:
+        mesSTR = 'sep'
+    elif int(MES) == 10:
+        mesSTR = 'oct'
+    elif int(MES) == 11:
+        mesSTR = 'nov'
+    elif int(MES) == 12:
+        mesSTR = 'dic'
+    else:
+        alertaMES =  messagebox.askokcancel("CUIDADO","Ese mes no existe")
+    añoVN = AÑO.strip('20')
+    codigoVN = "VN"+mesSTR+añoVN
+
+    ##hora
+    hora = ["1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00"]    
+
+    #empleados
+    empleados = []
+    cur.execute('select codigo_ep from "empleados"')
+    rows_em = cur.fetchall()
+    for r in rows_em:
+        r = str(r)
+        r = r.strip("'(")
+        r = r.strip("'                                              ',)")
+        empleados.append(r)
+
+    #cliente
+    cliente = []
+    cur.execute('select codigo_cl from "cliente"')
+    rows_cl = cur.fetchall()
+    for r in rows_cl:
+        r = str(r)
+        r = r.strip("'(")
+        r = r.strip("'                                              ',)")
+        cliente.append(r)
+    CLIENTE = random.choice(cliente)
+
+    #medicina
+    medicina = []
+    cur.execute('select codifo_mc from "producto"')
+    rows_mc = cur.fetchall()
+    for r in rows_mc:
+        r = str(r)
+        r = r.strip("'(")
+        r = r.strip("'                                              ',)")
+        medicina.append(r)
+
+    #fecha
+    date = AÑO+"-"+MES+"-"+DIA
+
+    
+    i = 0
+    e = 1
+    while i < entradas:
+        if e == 1:
+            NNN = int(NN)
+            NN = str(NNN)
+            numeroFactura = AÑO+"_"+MES+"_"+NN
+            horan = random.choice(hora)
+            generado = 15
+            EMPLEADO = random.choice(empleados)
+            CLIENTE = random.choice(cliente)
+            MEDICINA = random.choice(medicina)
+            cur.execute('select "precio_individual" from "producto" where "codifo_mc"  = %s', (MEDICINA,))
+            rows_pr = cur.fetchall()
+            for r in rows_pr:
+                r = str(r)
+                r = r.strip("(")
+                precio = r.strip(",)")
+            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
+            con.commit()
+            e += 1
+            i = i + 1
+            
+        elif e == 2:
+            NNN = int(NN)
+            NNN +=  1
+            NN = str(NNN)
+            numeroFactura = AÑO+"_"+MES+"_"+NN
+            horan = random.choice(hora)
+            generado = 15
+            EMPLEADO = random.choice(empleados)
+            CLIENTE = random.choice(cliente)
+            MEDICINA = random.choice(medicina)
+            cur.execute('select "precio_individual" from "producto" where "codifo_mc"  = %s', (MEDICINA,))
+            rows_pr = cur.fetchall()
+            for r in rows_pr:
+                r = str(r)
+                r = r.strip("(")
+                precio = r.strip(",)")
+            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
+            con.commit()
+            if e == 2:
+                MEDICINA = random.choice(medicina)
+                cur.execute('select "precio_individual" from "producto" where "codifo_mc"  = %s', (MEDICINA,))
+                rows_pr = cur.fetchall()
+                for r in rows_pr:
+                    r = str(r)
+                    r = r.strip("(")
+                    precio = r.strip(",)")
+                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
+                con.commit()
+                e += 1
+                i = i + 1
+                
+        elif e == 3:
+            NNN = int(NN)
+            NNN +=  1
+            NN = str(NNN)
+            numeroFactura = AÑO+"_"+MES+"_"+NN
+            horan = random.choice(hora)
+            generado = 15
+            EMPLEADO = random.choice(empleados)
+            CLIENTE = random.choice(cliente)
+            MEDICINA = random.choice(medicina)
+            cur.execute('select "precio_individual" from "producto" where "codifo_mc"  = %s', (MEDICINA,))
+            rows_pr = cur.fetchall()
+            for r in rows_pr:
+                r = str(r)
+                r = r.strip("(")
+                precio = r.strip(",)")
+            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
+            con.commit()
+            if e ==3:
+                MEDICINA = random.choice(medicina)
+                cur.execute('select "precio_individual" from "producto" where "codifo_mc"  = %s', (MEDICINA,))
+                rows_pr = cur.fetchall()
+                for r in rows_pr:
+                    r = str(r)
+                    r = r.strip("(")
+                    precio = r.strip(",)")
+                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
+                con.commit()
+                e = 3
+                if e == 3:
+                    MEDICINA = random.choice(medicina)
+                    cur.execute('select "precio_individual" from "producto" where "codifo_mc"  = %s', (MEDICINA,))
+                    rows_pr = cur.fetchall()
+                    for r in rows_pr:
+                        r = str(r)
+                        r = r.strip("(")
+                        precio = r.strip(",)")
+                    cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                            ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
+                    con.commit()
+
+                    NNN = int(NN)
+                    NNN +=  1
+                    NN = str(NNN)
+                    e = 1
+                    i = i + 1
+    print("HECHO")
 
 
+#Ingresar cantidad
+labelf= Label(leFrame, text="INGRESE EL NUMERO DE FACTRUA", fg="white", bg="red3")
+labelf.place(x=90,y=10)
+nn = Spinbox(leFrame, from_=0, to=1000)
+nn.place(x=90,y=40)
 
-# Labels, entries y boton
-label1= Label(leFrame, text="INGRESE LA CANTIDAD DE TRANSACCIONES", font = (40))
-label1.place(x=100,y=100)
+label1= Label(leFrame, text="INGRESE LA CANTIDAD DE TRANSACCIONES", fg="white", bg="red3")
+label1.place(x=90,y=100)
+cantidad= Spinbox(leFrame, from_=0, to=1000)
+cantidad.place(x=90,y=130)
 
-cant = StringVar()
-entry1= Entry(leFrame, textvariable=cant)
-entry1.place(x=100,y=130)
+labelM= Label(leFrame, text="INGRESE EL MES", fg="white", bg="red3")
+labelM.place(x=90,y=200)
+mes = Spinbox(leFrame, from_=0, to=12)
+mes.place(x=90,y=230)
 
-label2= Label(leFrame, text="INGRESE EL MES", font = (40))
-label2.place(x=100,y=200)
+labelD= Label(leFrame, text="INGRESE EL DIA", fg="white", bg="red3")
+labelD.place(x=90,y=280)
+dia= Spinbox(leFrame, from_=0, to=31)
+dia.place(x=90,y=310)
 
-mes= StringVar() 
-entry2= Entry(leFrame,textvariable=mes)
-entry2.place(x=100,y=230)
+labelA= Label(leFrame, text="INGRESE EL AÑO", fg="white", bg="red3")
+labelA.place(x=90,y=360)
+año= Spinbox(leFrame, from_=0, to=1000000)
+año.place(x=90,y=390)
 
-label3= Label(leFrame, text="INGRESE EL DIA", font = (40))
-label3.place(x=100,y=280)
-
-dia= StringVar()
-entry3= Entry(leFrame,textvariable=dia)
-entry3.place(x=100,y=310)
-
-label4= Label(leFrame, text="INGRESE EL AÑO", font = (40))
-label4.place(x=100,y=360)
-
-year= StringVar() 
-entry4= Entry(leFrame,textvariable=year)
-entry4.place(x=100,y=390)
-
-boton1= Button(leFrame, text="SIMULAR", command = simulacion)
-boton1.place(x=600,y=200)
-
-
-
-#Prework
-cliente =['cl01','cl02','cl03','cl04','cl05','cl06', 'cl07', 'cl08', 'cl09', 'cl10', 'cl11', 'cl12', 'cl13', 'cl014', 'cl15', 'cl16', 'cl17', 'cl18', 'cl19', 'cl20', 'cl21', 'cl22', 'cl23', 'cl24', 'cl25']
-producto =['mc01','mc02','mc03','mc04','mc05','mc06','mc07','mc08','mc09','mc10','mc11','mc12','mc13','mc14','mc15','mc16','mc17','mc18','mc019','mc020']
-empleado =['ep01', 'ep02', 'ep03', 'ep04', 'ep05']
-
-
-
-
-
-
-res_cliente = random.choice(cliente)
-res_producto = random.choice(producto)
-res_empleado = random.choice(empleado)
-
-
-
-
-
-
-
+boton1= Button(leFrame, text="SIMULAR", command=simular)
+boton1.place(x=100,y=450)
 
 
 #End del Frame
