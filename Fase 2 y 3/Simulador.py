@@ -101,7 +101,6 @@ def simular():
 
     #fecha
     date = AÑO+"-"+MES+"-"+DIA
-    origen = "farmacia_roja"
 
     
     i = 0
@@ -122,8 +121,8 @@ def simular():
                 r = str(r)
                 r = r.strip("(")
                 precio = r.strip(",)")
-            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date, origen)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
-                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date, origen))
+            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
             con.commit()
             e += 1
             i = i + 1
@@ -144,8 +143,8 @@ def simular():
                 r = str(r)
                 r = r.strip("(")
                 precio = r.strip(",)")
-            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date, origen)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
-                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date, origen))
+            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
             con.commit()
             if e == 2:
                 MEDICINA = random.choice(medicina)
@@ -155,8 +154,8 @@ def simular():
                     r = str(r)
                     r = r.strip("(")
                     precio = r.strip(",)")
-                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date, origen)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
-                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date, origen))
+                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
                 con.commit()
                 e += 1
                 i = i + 1
@@ -177,8 +176,8 @@ def simular():
                 r = str(r)
                 r = r.strip("(")
                 precio = r.strip(",)")
-            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date, origen)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
-                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date, origen))
+            cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
             con.commit()
             if e ==3:
                 MEDICINA = random.choice(medicina)
@@ -188,8 +187,8 @@ def simular():
                     r = str(r)
                     r = r.strip("(")
                     precio = r.strip(",)")
-                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date, origen)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
-                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date, origen))
+                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                        ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
                 con.commit()
                 e = 3
                 if e == 3:
@@ -200,8 +199,8 @@ def simular():
                         r = str(r)
                         r = r.strip("(")
                         precio = r.strip(",)")
-                    cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date, origen)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
-                            ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date, origen))
+                    cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de factura ", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                            ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date))
                     con.commit()
 
                     NNN = int(NN)
