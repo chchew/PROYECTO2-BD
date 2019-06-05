@@ -1,0 +1,749 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20192.19.0515.1630                               -->
+<workbook source-build='2019.2.0 (20192.19.0515.1630)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Farmacia_Central' inline='true' name='federated.14ztexn02kiugn1az4htu0dbi46k' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='localhost' name='postgres.16tvnaz1581cxz18hmcu00w1beao'>
+            <connection authentication='username-password' class='postgres' dbname='Farmacia_Central' odbc-native-protocol='' one-time-sql='' port='5432' server='localhost' username='postgres' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[ventasazul].[codigo_mc]' />
+              <expression op='[productosazul].[codigo_mc]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[ventasazul].[codigo_ep]' />
+                <expression op='[empleadosazul].[codigo_ep]' />
+              </expression>
+            </clause>
+            <relation join='inner' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[ventasazul].[codigo_cl]' />
+                  <expression op='[clienteazul].[codigo_cl]' />
+                </expression>
+              </clause>
+              <relation connection='postgres.16tvnaz1581cxz18hmcu00w1beao' name='ventasazul' table='[public].[ventasazul]' type='table' />
+              <relation connection='postgres.16tvnaz1581cxz18hmcu00w1beao' name='clienteazul' table='[public].[clienteazul]' type='table' />
+            </relation>
+            <relation connection='postgres.16tvnaz1581cxz18hmcu00w1beao' name='empleadosazul' table='[public].[empleadosazul]' type='table' />
+          </relation>
+          <relation connection='postgres.16tvnaz1581cxz18hmcu00w1beao' name='productosazul' table='[public].[productosazul]' type='table' />
+        </relation>
+        <cols>
+          <map key='[cantidad_por_unidad]' value='[productosazul].[cantidad_por_unidad]' />
+          <map key='[codigo_cl (clienteazul)]' value='[clienteazul].[codigo_cl]' />
+          <map key='[codigo_cl]' value='[ventasazul].[codigo_cl]' />
+          <map key='[codigo_ep (empleadosazul)]' value='[empleadosazul].[codigo_ep]' />
+          <map key='[codigo_ep]' value='[ventasazul].[codigo_ep]' />
+          <map key='[codigo_mc (productosazul)]' value='[productosazul].[codigo_mc]' />
+          <map key='[codigo_mc]' value='[ventasazul].[codigo_mc]' />
+          <map key='[codigo_vn]' value='[ventasazul].[codigo_vn]' />
+          <map key='[dinero_generado]' value='[ventasazul].[dinero_generado]' />
+          <map key='[dirrecion]' value='[clienteazul].[dirrecion]' />
+          <map key='[farmaceutica]' value='[productosazul].[farmaceutica]' />
+          <map key='[fecha]' value='[ventasazul].[fecha]' />
+          <map key='[hora]' value='[ventasazul].[hora]' />
+          <map key='[nombre (empleadosazul)]' value='[empleadosazul].[nombre]' />
+          <map key='[nombre (productosazul)]' value='[productosazul].[nombre]' />
+          <map key='[nombre]' value='[clienteazul].[nombre]' />
+          <map key='[numero_de_factrua]' value='[ventasazul].[numero_de_factrua]' />
+          <map key='[origen]' value='[ventasazul].[origen]' />
+          <map key='[precio]' value='[ventasazul].[precio]' />
+          <map key='[precio_individual]' value='[productosazul].[precio_individual]' />
+          <map key='[salario]' value='[empleadosazul].[salario]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>codigo_vn</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[codigo_vn]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>codigo_vn</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hora</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[hora]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>hora</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>numero_de_factrua</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[numero_de_factrua]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>numero_de_factrua</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dinero_generado</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[dinero_generado]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>dinero_generado</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>codigo_ep</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[codigo_ep]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>codigo_ep</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>codigo_cl</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[codigo_cl]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>codigo_cl</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>codigo_mc</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[codigo_mc]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>codigo_mc</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>precio</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[precio]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>precio</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fecha</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[fecha]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>fecha</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>origen</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[origen]</local-name>
+            <parent-name>[ventasazul]</parent-name>
+            <remote-alias>origen</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>codigo_cl</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[codigo_cl (clienteazul)]</local-name>
+            <parent-name>[clienteazul]</parent-name>
+            <remote-alias>codigo_cl</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[nombre]</local-name>
+            <parent-name>[clienteazul]</parent-name>
+            <remote-alias>nombre</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dirrecion</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[dirrecion]</local-name>
+            <parent-name>[clienteazul]</parent-name>
+            <remote-alias>dirrecion</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>codigo_ep</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[codigo_ep (empleadosazul)]</local-name>
+            <parent-name>[empleadosazul]</parent-name>
+            <remote-alias>codigo_ep</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[nombre (empleadosazul)]</local-name>
+            <parent-name>[empleadosazul]</parent-name>
+            <remote-alias>nombre</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>salario</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[salario]</local-name>
+            <parent-name>[empleadosazul]</parent-name>
+            <remote-alias>salario</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>codigo_mc</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[codigo_mc (productosazul)]</local-name>
+            <parent-name>[productosazul]</parent-name>
+            <remote-alias>codigo_mc</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>false</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nombre</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[nombre (productosazul)]</local-name>
+            <parent-name>[productosazul]</parent-name>
+            <remote-alias>nombre</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cantidad_por_unidad</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[cantidad_por_unidad]</local-name>
+            <parent-name>[productosazul]</parent-name>
+            <remote-alias>cantidad_por_unidad</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>farmaceutica</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[farmaceutica]</local-name>
+            <parent-name>[productosazul]</parent-name>
+            <remote-alias>farmaceutica</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <padded-semantics>true</padded-semantics>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>precio_individual</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[precio_individual]</local-name>
+            <parent-name>[productosazul]</parent-name>
+            <remote-alias>precio_individual</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Cantidad Por Unidad' datatype='integer' name='[cantidad_por_unidad]' role='measure' type='quantitative' />
+      <column caption='Codigo Cl (Clienteazul)' datatype='string' name='[codigo_cl (clienteazul)]' role='dimension' type='nominal' />
+      <column caption='Codigo Cl' datatype='string' name='[codigo_cl]' role='dimension' type='nominal' />
+      <column caption='Codigo Ep (Empleadosazul)' datatype='string' name='[codigo_ep (empleadosazul)]' role='dimension' type='nominal' />
+      <column caption='Codigo Ep' datatype='string' name='[codigo_ep]' role='dimension' type='nominal' />
+      <column caption='Codigo Mc (Productorojo)' datatype='string' name='[codigo_mc (productorojo)]' role='dimension' type='nominal' />
+      <column caption='Codigo Mc (Productosazul)' datatype='string' name='[codigo_mc (productosazul)]' role='dimension' type='nominal' />
+      <column caption='Codigo Mc' datatype='string' name='[codigo_mc]' role='dimension' type='nominal' />
+      <column caption='Codigo Vn' datatype='string' name='[codigo_vn]' role='dimension' type='nominal' />
+      <column caption='Dinero Generado' datatype='integer' name='[dinero_generado]' role='measure' type='quantitative' />
+      <column caption='Dirrecion' datatype='string' name='[dirrecion]' role='dimension' type='nominal' />
+      <column caption='Farmaceutica' datatype='string' name='[farmaceutica]' role='dimension' type='nominal' />
+      <column caption='Fecha' datatype='date' name='[fecha]' role='dimension' type='ordinal' />
+      <column caption='Hora' datatype='string' name='[hora]' role='dimension' type='nominal' />
+      <column caption='Nombre (Clienterojo)' datatype='string' name='[nombre (clienterojo)]' role='dimension' type='nominal' />
+      <column caption='Nombre (Empleadosazul)' datatype='string' name='[nombre (empleadosazul)]' role='dimension' type='nominal' />
+      <column caption='Nombre (Productorojo)' datatype='string' name='[nombre (productorojo)]' role='dimension' type='nominal' />
+      <column caption='Nombre (Productosazul)' datatype='string' name='[nombre (productosazul)]' role='dimension' type='nominal' />
+      <column caption='Nombre' datatype='string' name='[nombre]' role='dimension' type='nominal' />
+      <column caption='Numero De Factrua' datatype='string' name='[numero_de_factrua]' role='dimension' type='nominal' />
+      <column caption='Origen' datatype='string' name='[origen]' role='dimension' type='nominal' />
+      <column caption='Precio' datatype='integer' name='[precio]' role='measure' type='quantitative' />
+      <column caption='Precio Individual' datatype='integer' name='[precio_individual]' role='measure' type='quantitative' />
+      <column caption='Salario' datatype='integer' name='[salario]' role='measure' type='quantitative' />
+      <column-instance column='[nombre]' derivation='None' name='[none:nombre:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.644279' measure-ordering='alphabetic' measure-percentage='0.355721' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:nombre:nk]' palette='blue_10_0' type='palette'>
+            <map to='#2a5783'>
+              <bucket>&quot;Paolo Suchini&quot;</bucket>
+            </map>
+            <map to='#386592'>
+              <bucket>&quot;Luis Esturban&quot;</bucket>
+            </map>
+            <map to='#4472a0'>
+              <bucket>&quot;Lisa Ann&quot;</bucket>
+            </map>
+            <map to='#5081ae'>
+              <bucket>&quot;Julio Quiroa&quot;</bucket>
+            </map>
+            <map to='#5f90ba'>
+              <bucket>&quot;Julia Ann&quot;</bucket>
+            </map>
+            <map to='#6e9fc7'>
+              <bucket>&quot;Jorge Macario&quot;</bucket>
+            </map>
+            <map to='#7eaed3'>
+              <bucket>&quot;Jarod Salvatierra&quot;</bucket>
+            </map>
+            <map to='#90bede'>
+              <bucket>&quot;George Bandi&quot;</bucket>
+            </map>
+            <map to='#a4cee9'>
+              <bucket>&quot;Daniel Barco&quot;</bucket>
+            </map>
+            <map to='#b9ddf1'>
+              <bucket>&quot;Aaron Judge&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Empleados con mas ventas</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Farmacia_Central' name='federated.14ztexn02kiugn1az4htu0dbi46k' />
+          </datasources>
+          <datasource-dependencies datasource='federated.14ztexn02kiugn1az4htu0dbi46k'>
+            <column caption='Nombre (Empleadosazul)' datatype='string' name='[nombre (empleadosazul)]' role='dimension' type='nominal' />
+            <column-instance column='[nombre (empleadosazul)]' derivation='None' name='[none:nombre (empleadosazul):nk]' pivot='key' type='nominal' />
+            <column caption='Salario' datatype='integer' name='[salario]' role='measure' type='quantitative' />
+            <column-instance column='[salario]' derivation='Sum' name='[sum:salario:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#4e79a7' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.14ztexn02kiugn1az4htu0dbi46k].[sum:salario:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.14ztexn02kiugn1az4htu0dbi46k].[none:nombre (empleadosazul):nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{21005A12-BEE7-4665-B339-92C3654E244C}' />
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Producto mas vendido</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Farmacia_Central' name='federated.14ztexn02kiugn1az4htu0dbi46k' />
+          </datasources>
+          <datasource-dependencies datasource='federated.14ztexn02kiugn1az4htu0dbi46k'>
+            <column caption='Dinero Generado' datatype='integer' name='[dinero_generado]' role='measure' type='quantitative' />
+            <column caption='Nombre (Productosazul)' datatype='string' name='[nombre (productosazul)]' role='dimension' type='nominal' />
+            <column-instance column='[nombre (productosazul)]' derivation='None' name='[none:nombre (productosazul):nk]' pivot='key' type='nominal' />
+            <column-instance column='[dinero_generado]' derivation='Sum' name='[sum:dinero_generado:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.14ztexn02kiugn1az4htu0dbi46k].[sum:dinero_generado:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#d0d0e6</color>
+                <color>#b1b2db</color>
+                <color>#9596d0</color>
+                <color>#7a7cc5</color>
+                <color>#6263bb</color>
+                <color>#4c4db0</color>
+                <color>#3739a5</color>
+                <color>#25279a</color>
+                <color>#15178f</color>
+                <color>#070985</color>
+              </color-palette>
+            </encoding>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.14ztexn02kiugn1az4htu0dbi46k].[none:nombre (productosazul):nk]</rows>
+        <cols>[federated.14ztexn02kiugn1az4htu0dbi46k].[sum:dinero_generado:qk]</cols>
+      </table>
+      <simple-id uuid='{B538F476-17CE-43BF-B1CD-AA017B2D5F85}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Cliente mas fiel</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Farmacia_Central' name='federated.14ztexn02kiugn1az4htu0dbi46k' />
+          </datasources>
+          <datasource-dependencies datasource='federated.14ztexn02kiugn1az4htu0dbi46k'>
+            <column caption='Dinero Generado' datatype='integer' name='[dinero_generado]' role='measure' type='quantitative' />
+            <column caption='Nombre' datatype='string' name='[nombre]' role='dimension' type='nominal' />
+            <column-instance column='[nombre]' derivation='None' name='[none:nombre:nk]' pivot='key' type='nominal' />
+            <column-instance column='[dinero_generado]' derivation='Sum' name='[sum:dinero_generado:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#5555ff' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.14ztexn02kiugn1az4htu0dbi46k].[sum:dinero_generado:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#d0d4e6</color>
+                <color>#b2badb</color>
+                <color>#96a1d0</color>
+                <color>#7c8ac5</color>
+                <color>#6474bb</color>
+                <color>#4e60b0</color>
+                <color>#3a4ea5</color>
+                <color>#283d9a</color>
+                <color>#182e8f</color>
+                <color>#0a2185</color>
+              </color-palette>
+            </encoding>
+            <encoding attr='size-bar' field='[federated.14ztexn02kiugn1az4htu0dbi46k].[sum:dinero_generado:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.14ztexn02kiugn1az4htu0dbi46k].[sum:dinero_generado:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.14ztexn02kiugn1az4htu0dbi46k].[none:nombre:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{D8F812DF-C8CC-4980-A1CB-DD8AE57EC27B}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A7989454-4E94-4B19-8E7E-5C50C0E95F40}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='100'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E3357D1B-2287-42FF-82FB-AEAF38B98F65}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2EDF95F7-6126-485F-9C10-EB683868EFDB}' />
+    </window>
+  </windows>
+</workbook>
