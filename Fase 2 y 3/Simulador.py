@@ -101,7 +101,8 @@ def simular():
 
     #fecha
     date = AÑO+"-"+MES+"-"+DIA
-    origen = 'farmacia_roja'
+    origen = 'Farmacia_Azul'
+
 
 
     i = 0
@@ -188,7 +189,7 @@ def simular():
                     r = str(r)
                     r = r.strip("(")
                     precio = r.strip(",)")
-                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de facturas", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
+                cur.execute('INSERT INTO public."Ventas Especificas"(codigo_vn, hora, "numero de facturas", dinero_generado, codigo_ep, codigo_cl, codigo_mc, precio, date, origen)VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'\
                         ,(codigoVN, horan, numeroFactura, generado, EMPLEADO, CLIENTE, MEDICINA, precio, date, origen))
                 con.commit()
                 e = 3
