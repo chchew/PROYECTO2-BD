@@ -159,23 +159,9 @@ def consultar_productos():
     rows_2 = cur.fetchall()
     for r in rows_2:
         fin = int(r[0])
-    print(fin)
-    labelP = Label(miFrame, text="Codigo \nmedicina:", fg="red3")
-    labelP.place(x=90,y=60)
-    labelP = Label(miFrame, text="Nombre:", fg="red3")
-    labelP.place(x=190,y=60)
-    labelP = Label(miFrame, text="cantidad:", fg="red3")
-    labelP.place(x=290,y=60)
-    labelP = Label(miFrame, text="farmaceutica:", fg="red3")
-    labelP.place(x=390,y=60)
-
-    n = 0
-    x = 0
-    while n < fin:
-        labelP = Label(miFrame, text=rows[0+n], fg="red3")
-        labelP.place(x=90,y=100+x)
-        n = n + 1
-        x = x + 30
+    for r in rows:
+        r = str(r)
+        print(r)
         
 def insertar_producto():
     alertaC =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
@@ -221,23 +207,10 @@ def consultar_empleados():
     rows = cur.fetchall()
     cur.execute('SELECT count(nombre) FROM "empleados" ')
     rows_2 = cur.fetchall()
-    for r in rows_2:
-        fin = int(r[0])
-    print(fin)
-    labelP = Label(miFrame, text="Codigo \nempledos:", fg="red3")
-    labelP.place(x=90,y=60)
-    labelP = Label(miFrame, text="Nombre:", fg="red3")
-    labelP.place(x=190,y=60)
-    labelP = Label(miFrame, text="salario:", fg="red3")
-    labelP.place(x=290,y=60)
-
-    n = 0
-    x = 0
-    while n < fin:
-        labelP = Label(miFrame, text=rows[0+n], fg="red3")
-        labelP.place(x=90,y=100+x)
-        n = n + 1
-        x = x + 30
+    for r in rows:
+        r = str(r)
+        print(r)
+    
 
 def insertar_empleado():
     alertaC =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
@@ -277,23 +250,11 @@ def consultar_cliente():
     rows = cur.fetchall()
     cur.execute('SELECT count(nombre) FROM "cliente" ')
     rows_2 = cur.fetchall()
-    for r in rows_2:
-        fin = int(r[0])
-    print(fin)
-    labelP = Label(miFrame, text="Codigo \ncliente:", fg="red3")
-    labelP.place(x=90,y=60)
-    labelP = Label(miFrame, text="Nombre:", fg="red3")
-    labelP.place(x=190,y=60)
-    labelP = Label(miFrame, text="Dirrección:", fg="red3")
-    labelP.place(x=290,y=60)
+    for r in rows:
+        r = str(r)
+        print(r)
+        
 
-    n = 0
-    x = 0
-    while n < fin:
-        labelP = Label(miFrame, text=rows[0+n], fg="red3")
-        labelP.place(x=90,y=100+x)
-        n = n + 1
-        x = x + 30
 
 def insertar_cliente():
    alertaC =  messagebox.askokcancel("Cuidado", "Esta seguro de mandar esta información")
@@ -342,36 +303,10 @@ def consultar_ventas():
         rows = cur.fetchall()
         cur.execute('SELECT count(codigo_vn) FROM "Ventas Especificas" WHERE "date" = (%s) ',(fechaactual,))
         rows_2 = cur.fetchall()
-        for r in rows_2:
-            fin = int(r[0])
-        print(fin)
-        labelP = Label(miFrame, text="Codigo \nventa:", fg="red3")
-        labelP.place(x=90,y=60)
-        labelP = Label(miFrame, text="hora:", fg="red3")
-        labelP.place(x=190,y=60)
-        labelP = Label(miFrame, text="N. factura:", fg="red3")
-        labelP.place(x=290,y=60)
-        labelP = Label(miFrame, text="Dinero G:", fg="red3")
-        labelP.place(x=390,y=60)
-        labelP = Label(miFrame, text="C. Empleado:", fg="red3")
-        labelP.place(x=490,y=60)
-        labelP = Label(miFrame, text="C. Cliente:", fg="red3")
-        labelP.place(x=590,y=60)
-        labelP = Label(miFrame, text="C. Medicina:", fg="red3")
-        labelP.place(x=690,y=60)
-        labelP = Label(miFrame, text="Precio:", fg="red3")
-        labelP.place(x=790,y=60)
-        labelP = Label(miFrame, text="Fecha:", fg="red3")
-        labelP.place(x=890,y=60)
-        
-
-        n = 0
-        x = 0
-        while n < fin:
-            labelP = Label(miFrame, text=rows[0+n], fg="red3")
-            labelP.place(x=90,y=100+x)
-            n = n + 1
-            x = x + 30
+        for r in rows:
+            r = str(r)
+            print(r)
+            print("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 
 def insertar_ventas():
     fechaactual = str(año)+"-"+str(mes)+"-"+str(dia)
