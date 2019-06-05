@@ -1,0 +1,13 @@
+codigo_mc,nombre,# cantidad por unidad,farmaceutica,precio_individual
+mc01       ,Xenoxidil                                         ,500,Pedo lab                                          ,500
+mc02       ,Menoil                                            ,700,Pedo lab                                          ,200
+mc03       ,Menotiriil                                        ,350,Manu lab                                          ,150
+mc04       ,Viagra                                            ,550,Xenoba lab                                        ,20
+mc05       ,Sana sana                                         ,200,Loba industries                                   ,10
+mc06       ,Comeritar                                         ,700,Madustries                                        ,250
+mc07       ,GMS pomada                                        ,150,Madustries                                        ,290
+mc08       ,Patrucha                                          ,650,Madustries                                        ,510
+mc09       ,Falez                                             ,900,Mipa lab                                          ,125
+mc10       ,Fritas                                            ,1200,Mipa lab                                          ,205
+mc11       ,Modire                                            ,120,Mipa lab                                          ,400
+mc12       ,Xenoxidil                                         ,120,Mipa lab                                          ,500
