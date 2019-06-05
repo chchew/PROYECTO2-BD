@@ -1,0 +1,1 @@
+jdbc:hive2://tu IP:10000 
